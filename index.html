@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+	<title>FORM</title>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var x=localStorage.getItem("Details");
+				if(x)
+				{
+						var arr= JSON.parse(x);
+						console.log(arr);
+						for(var i=0;i<arr.length;i++){
+							$("#bd").append("<tr><td>"+arr[i].Name+"</td>"+"<td>"+arr[i].Telephone+"</td>"+"<td>"+arr[i].Email"</td></tr>")
+						}
+				}
+
+
+
+
+
+			$("#b").on('click',function(){
+				var obj = { "Name":$("#fname").val(), "Telephone":$("#phone").val(), "Email":$("#mail").val()};
+				var a=[];
+				a.push(obj)
+				
+				localStorage.setItem("Details",JSON.stringify(a));
+				//text = localStorage.getItem("Details");
+				//o = JSON.parse(text);
+				//$("#t1").html(o.Name);
+				//$("#t2").html(o.Telephone);
+				//$("#t3").html(o.Email);
+		});
+		});
+	</script>
+</head>
+<body>
+	
+	<h1 style="text-align: center">FORM</h1>
+<div class = "container-fluid">
+	<div class = "row">
+		<div class = "col-md-6">
+			<form id = "f" >
+ 			 	<div class="form-group">
+    				<label for="text">Name:</label>
+    				<input type="text" class="form-control" id="fname" >
+    				<p id="demo"></p>
+  				</div>
+  				<div class="form-group">
+    				<label for="Telephone">Phone No.:</label>
+    				<input type="Telephone" class="form-control" id="phone">
+  				</div>
+ 				 <div class="form-group">
+   				 	<label>Email ID:</label>
+   				 	<input type="Email" class="form-control" id="mail">
+  				</div>
+  				<button type="button" class="btn btn-default" id="b">Submit</button>
+  					</form>
+			
+			<table class="table table-striped">
+   				 <thead>
+      				<tr>
+        				<th>Name</th>
+        				<th>Phone no</th>
+        				<th>Email</th>
+      				</tr>
+    			</thead>
+    			<tbody id="bd">     				
+     				 
+    			</tbody>
+  			</table>
+</body>
+</html>
