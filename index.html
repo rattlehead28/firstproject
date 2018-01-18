@@ -9,31 +9,26 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var x=localStorage.getItem("Details");
-				if(x)
-				{
-						var arr= JSON.parse(x);
-						console.log(arr);
-						for(var i=0;i<arr.length;i++){
-							$("#bd").append("<tr><td>"+arr[i].Name+"</td>"+"<td>"+arr[i].Telephone+"</td>"+"<td>"+arr[i].Email"</td></tr>")
-						}
-				}
-
-
-
-
-
+			var arr=[];
+			var i=0;
 			$("#b").on('click',function(){
-				var obj = { "Name":$("#fname").val(), "Telephone":$("#phone").val(), "Email":$("#mail").val()};
-				var a=[];
-				a.push(obj)
+				if($("#fname").val()){
+					
+					var obj = { "Name":$("#fname").val(), "Telephone":$("#phone").val(), "Email":$("#mail").val()};
 				
-				localStorage.setItem("Details",JSON.stringify(a));
-				//text = localStorage.getItem("Details");
-				//o = JSON.parse(text);
-				//$("#t1").html(o.Name);
-				//$("#t2").html(o.Telephone);
-				//$("#t3").html(o.Email);
+					arr.push(obj)
+				
+					localStorage.setItem("Details",JSON.stringify(arr));
+			    	var x=localStorage.getItem("Details");
+					arr= JSON.parse(x);
+					
+					$("#bd").append("<tr><td>"+arr[i].Name+"</td><td>"+arr[i].Telephone+"</td><td>"+arr[i].Email+"</td></tr>")
+					i++;
+				}
+				else{
+					$("#demo").html("Please, enter the name")
+				}
+				
 		});
 		});
 	</script>
@@ -48,7 +43,7 @@
  			 	<div class="form-group">
     				<label for="text">Name:</label>
     				<input type="text" class="form-control" id="fname" >
-    				<p id="demo"></p>
+    				<p><span id="demo" style="color: red"></span></p>
   				</div>
   				<div class="form-group">
     				<label for="Telephone">Phone No.:</label>
