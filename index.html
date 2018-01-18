@@ -12,8 +12,8 @@
 			var arr=[];
 			var i=0;
 			$("#b").on('click',function(){
-				if($("#fname").val()){
-					
+				if($("#fname").val()&&$("#phone").val()&&$("#mail").val()){
+					$("#demo").html("")
 					var obj = { "Name":$("#fname").val(), "Telephone":$("#phone").val(), "Email":$("#mail").val()};
 				
 					arr.push(obj)
